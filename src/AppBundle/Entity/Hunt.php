@@ -65,10 +65,146 @@ class Hunt
      */
     protected $bar;
 
+    /**
+     * @var Hunter the hunter of this hunt.
+     *
+     * @ORM\ManyToOne(targetEntity="Hunter", inversedBy="hunts")
+     * @ORM\JoinColumn(name="hunter_id", referencedColumnName="id")
+     */
+    protected $hunter;
+
     protected $status = Hunt::STATUS_ACTIVE;
 
     public function __construct()
     {
         $this->launchDate = new \DateTime();
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getLaunchDate()
+    {
+        return $this->launchDate;
+    }
+
+    /**
+     * @param \DateTime $launchDate
+     */
+    public function setLaunchDate($launchDate)
+    {
+        $this->launchDate = $launchDate;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isIsPressure()
+    {
+        return $this->isPressure;
+    }
+
+    /**
+     * @param boolean $isPressure
+     */
+    public function setIsPressure($isPressure)
+    {
+        $this->isPressure = $isPressure;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBalance()
+    {
+        return $this->balance;
+    }
+
+    /**
+     * @param int $balance
+     */
+    public function setBalance($balance)
+    {
+        $this->balance = $balance;
+    }
+
+    /**
+     * @return Beer
+     */
+    public function getBeer()
+    {
+        return $this->beer;
+    }
+
+    /**
+     * @param Beer $beer
+     */
+    public function setBeer($beer)
+    {
+        $this->beer = $beer;
+    }
+
+    /**
+     * @return Bar
+     */
+    public function getBar()
+    {
+        return $this->bar;
+    }
+
+    /**
+     * @param Bar $bar
+     */
+    public function setBar($bar)
+    {
+        $this->bar = $bar;
+    }
+
+    /**
+     * @return Hunter
+     */
+    public function getHunter()
+    {
+        return $this->hunter;
+    }
+
+    /**
+     * @param Hunter $hunter
+     */
+    public function setHunter($hunter)
+    {
+        $this->hunter = $hunter;
+    }
+
+    /**
+     * @return int
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param int $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
     }
 }

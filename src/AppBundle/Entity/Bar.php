@@ -40,7 +40,7 @@ class Bar
     /**
      * @var Address The address of the bar.
      *
-     * @OneToOne(targetEntity="Address", mappedBy="address")
+     * @ORM\OneToOne(targetEntity="Address", mappedBy="address")
      */
     protected $address;
 
@@ -51,10 +51,88 @@ class Bar
      */
     protected $hunts;
 
-    protected $geolocation;
-
     public function __construct()
     {
         $this->hunts = new ArrayCollection();
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return String
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param String $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return String
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param String $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return Address
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param Address $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getHunts()
+    {
+        return $this->hunts;
+    }
+
+    /**
+     * @param ArrayCollection $hunts
+     */
+    public function setHunts($hunts)
+    {
+        $this->hunts = $hunts;
     }
 }

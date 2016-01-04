@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * An address.
  *
  * @ORM\Entity
- * @ORM\Table(name="city")
+ * @ORM\Table(name="address")
  */
 class Address
 {
@@ -35,7 +35,7 @@ class Address
      *
      * @ORM\Column(type="string", length=255, nullable=false)
      */
-    protected $name;
+    protected $street;
 
     /**
      * @ORM\ManyToOne(targetEntity="City", inversedBy="streets")
@@ -44,8 +44,88 @@ class Address
     protected $city;
 
     /**
-     * @OneToOne(targetEntity="Bar", inversedBy="address")
-     * @JoinColumn(name="bar_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="Bar", inversedBy="address")
+     * @ORM\JoinColumn(name="bar_id", referencedColumnName="id")
      */
     protected $bar;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return String
+     */
+    public function getStreet()
+    {
+        return $this->street;
+    }
+
+    /**
+     * @param String $street
+     */
+    public function setStreet($street)
+    {
+        $this->street = $street;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNumber()
+    {
+        return $this->number;
+    }
+
+    /**
+     * @param int $number
+     */
+    public function setNumber($number)
+    {
+        $this->number = $number;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param mixed $city
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBar()
+    {
+        return $this->bar;
+    }
+
+    /**
+     * @param mixed $bar
+     */
+    public function setBar($bar)
+    {
+        $this->bar = $bar;
+    }
 }

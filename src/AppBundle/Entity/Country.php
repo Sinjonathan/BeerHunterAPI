@@ -56,4 +56,84 @@ class Country
         $this->beers = new ArrayCollection();
         $this->cities = new ArrayCollection();
     }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return String
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param String $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return String
+     */
+    public function getShort()
+    {
+        return $this->short;
+    }
+
+    /**
+     * @param String $short
+     */
+    public function setShort($short)
+    {
+        $this->short = $short;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getBeers()
+    {
+        return $this->beers;
+    }
+
+    /**
+     * @param ArrayCollection $beers
+     */
+    public function setBeers($beers)
+    {
+        $this->beers = $beers;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getCities()
+    {
+        return $this->cities;
+    }
+
+    /**
+     * @param ArrayCollection $cities
+     */
+    public function setCities($cities)
+    {
+        $this->cities = $cities;
+    }
 }

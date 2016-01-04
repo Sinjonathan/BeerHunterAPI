@@ -33,7 +33,7 @@ class City
     /**
      * @var Address All the address of a city
      *
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="city")
+     * @ORM\OneToMany(targetEntity="Address", mappedBy="city")
      */
     protected $streets;
 
@@ -48,5 +48,69 @@ class City
     public function __construct()
     {
         $this->streets = new ArrayCollection();
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return String
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param String $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return Address
+     */
+    public function getStreets()
+    {
+        return $this->streets;
+    }
+
+    /**
+     * @param Address $streets
+     */
+    public function setStreets($streets)
+    {
+        $this->streets = $streets;
+    }
+
+    /**
+     * @return Country
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param Country $country
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
     }
 }

@@ -41,4 +41,52 @@ class Color
     {
         $this->beers = new ArrayCollection();
     }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return String
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param String $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getBeers()
+    {
+        return $this->beers;
+    }
+
+    /**
+     * @param ArrayCollection $beers
+     */
+    public function setBeers($beers)
+    {
+        $this->beers = $beers;
+    }
 }

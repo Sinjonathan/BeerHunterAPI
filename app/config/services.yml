@@ -1,0 +1,40 @@
+services:
+    resource.address:
+        parent:    "api.resource"
+        arguments: [ "AppBundle\\Entity\\Address" ]
+        tags:      [ { name: "api.resource" } ]
+
+    resource.bar:
+        parent:    "api.resource"
+        arguments: [ "AppBundle\\Entity\\Bar" ]
+        tags:      [ { name: "api.resource" } ]
+
+    resource.beer:
+        parent:    "api.resource"
+        arguments: [ "AppBundle\\Entity\\Beer" ]
+        tags:      [ { name: "api.resource" } ]
+
+    resource.city:
+        parent:    "api.resource"
+        arguments: [ "AppBundle\\Entity\\City" ]
+        tags:      [ { name: "api.resource" } ]
+
+    resource.color:
+        parent:    "api.resource"
+        arguments: [ "AppBundle\\Entity\\Color" ]
+        tags:      [ { name: "api.resource" } ]
+
+    resource.country:
+        parent:    "api.resource"
+        arguments: [ "AppBundle\\Entity\\Country" ]
+        tags:      [ { name: "api.resource" } ]
+
+    resource.hunt:
+        parent:    "api.resource"
+        arguments: [ "AppBundle\\Entity\\Hunt" ]
+        tags:      [ { name: "api.resource" } ]
+
+    resource.hunter:
+        parent:    "api.resource"
+        arguments: [ "AppBundle\\Entity\\Hunter" ]
+        tags:      [ { name: "api.resource" } ]
