@@ -48,3 +48,8 @@ services:
         parent:    "api.resource"
         arguments: [ "AppBundle\\Entity\\TrophyHunter" ]
         tags:      [ { name: "api.resource" } ]
+
+    resource.vote:
+        parent:    "api.resource"
+        arguments: [ "AppBundle\\Entity\\Vote" ]
+        tags:      [ { name: "api.resource" } ]

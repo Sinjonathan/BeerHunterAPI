@@ -53,11 +53,18 @@ class Hunter extends User
     protected $hunts;
 
     /**
-     * @var ArrayCollection The link with additional attributes between Hunter and Trophy.
+     * @var ArrayCollection The link of belonging with additional attributes between Hunter and Trophy.
      *
      * @ORM\OneToMany(targetEntity="TrophyHunter", mappedBy="hunter", cascade={"all"})
      * */
     protected $trophyHunter;
+
+    /**
+     * @var ArrayCollection The link of vote with additional attributes between Hunter and Hunt.
+     *
+     * @ORM\OneToMany(targetEntity="Vote", mappedBy="hunter", cascade={"all"})
+     * */
+    protected $vote;
 
 
     // Overrides to fix Nelmio Api Doc
@@ -68,6 +75,7 @@ class Hunter extends User
         parent::__construct();
         $this->hunts = new ArrayCollection();
         $this->trophyHunter = new ArrayCollection();
+        $this->vote = new ArrayCollection();
     }
 
     /**
@@ -164,5 +172,21 @@ class Hunter extends User
     public function setTrophyHunter($trophyHunter)
     {
         $this->trophyHunter = $trophyHunter;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getVote()
+    {
+        return $this->vote;
+    }
+
+    /**
+     * @param ArrayCollection $vote
+     */
+    public function setVote($vote)
+    {
+        $this->vote = $vote;
     }
 }

@@ -38,7 +38,7 @@ class Trophy
     protected $description;
 
     /**
-     * @var ArrayCollection The link.
+     * @var ArrayCollection The link between Hunter and Trophy.
      *
      * @ORM\OneToMany(targetEntity="TrophyHunter" , mappedBy="trophy" , cascade={"all"})
      * */

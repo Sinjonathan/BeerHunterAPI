@@ -73,11 +73,19 @@ class Hunt
      */
     protected $hunter;
 
+    /**
+     * @var ArrayCollection The link of vote with additional attributes between Hunter and Hunt.
+     *
+     * @ORM\OneToMany(targetEntity="Vote", mappedBy="hunt", cascade={"all"})
+     * */
+    protected $vote;
+
     protected $status = Hunt::STATUS_ACTIVE;
 
     public function __construct()
     {
         $this->launchDate = new \DateTime();
+        $this->vote = new ArrayCollection();
     }
 
     /**
@@ -206,5 +214,21 @@ class Hunt
     public function setStatus($status)
     {
         $this->status = $status;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getVote()
+    {
+        return $this->vote;
+    }
+
+    /**
+     * @param ArrayCollection $vote
+     */
+    public function setVote($vote)
+    {
+        $this->vote = $vote;
     }
 }
