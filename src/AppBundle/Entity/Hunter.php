@@ -53,14 +53,21 @@ class Hunter extends User
     protected $hunts;
 
     /**
-     * Overrides to fix Nelmio Api Doc
-     */
+     * @var ArrayCollection The link with additional attributes between Hunter and Trophy.
+     *
+     * @ORM\OneToMany(targetEntity="TrophyHunter", mappedBy="hunter", cascade={"all"})
+     * */
+    protected $trophyHunter;
+
+
+    // Overrides to fix Nelmio Api Doc
     protected $groups;
 
     public function __construct()
     {
         parent::__construct();
         $this->hunts = new ArrayCollection();
+        $this->trophyHunter = new ArrayCollection();
     }
 
     /**
@@ -141,5 +148,21 @@ class Hunter extends User
     public function setHunts($hunts)
     {
         $this->hunts = $hunts;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getTrophyHunter()
+    {
+        return $this->trophyHunter;
+    }
+
+    /**
+     * @param ArrayCollection $trophyHunter
+     */
+    public function setTrophyHunter($trophyHunter)
+    {
+        $this->trophyHunter = $trophyHunter;
     }
 }

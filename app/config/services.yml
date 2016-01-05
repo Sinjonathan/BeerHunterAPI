@@ -38,3 +38,13 @@ services:
         parent:    "api.resource"
         arguments: [ "AppBundle\\Entity\\Hunter" ]
         tags:      [ { name: "api.resource" } ]
+
+    resource.trophy:
+        parent:    "api.resource"
+        arguments: [ "AppBundle\\Entity\\Trophy" ]
+        tags:      [ { name: "api.resource" } ]
+
+    resource.trophy_hunter:
+        parent:    "api.resource"
+        arguments: [ "AppBundle\\Entity\\TrophyHunter" ]
+        tags:      [ { name: "api.resource" } ]
