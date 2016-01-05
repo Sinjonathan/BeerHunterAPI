@@ -52,6 +52,11 @@ class Hunter extends User
      */
     protected $hunts;
 
+    /**
+     * Overrides to fix Nelmio Api Doc
+     */
+    protected $groups;
+
     public function __construct()
     {
         parent::__construct();

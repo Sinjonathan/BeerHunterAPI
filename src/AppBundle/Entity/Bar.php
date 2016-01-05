@@ -40,7 +40,7 @@ class Bar
     /**
      * @var Address The address of the bar.
      *
-     * @ORM\OneToOne(targetEntity="Address", mappedBy="address")
+     * @ORM\OneToOne(targetEntity="Address", mappedBy="bar")
      */
     protected $address;
 
