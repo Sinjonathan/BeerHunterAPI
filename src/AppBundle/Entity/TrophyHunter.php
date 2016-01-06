@@ -34,7 +34,7 @@ class TrophyHunter
     /**
      * @var Trophy The trophy unlocked.
      *
-     * @ORM\ManyToOne(targetEntity="Trophy", inversedBy="trophyHunter")
+     * @ORM\ManyToOne(targetEntity="Trophy", inversedBy="trophyHunter", cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(name="trophy_id", referencedColumnName="id")
      * */
     protected $trophy;
@@ -42,7 +42,7 @@ class TrophyHunter
     /**
      * @var Hunter The hunter who unlock the trophy.
      *
-     * @ORM\ManyToOne(targetEntity="Hunter", inversedBy="trophyHunter")
+     * @ORM\ManyToOne(targetEntity="Hunter", inversedBy="trophyHunter", cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(name="hunter_id", referencedColumnName="id")
      * */
     protected $hunter;

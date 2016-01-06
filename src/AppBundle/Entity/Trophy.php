@@ -40,7 +40,7 @@ class Trophy
     /**
      * @var ArrayCollection The link between Hunter and Trophy.
      *
-     * @ORM\OneToMany(targetEntity="TrophyHunter" , mappedBy="trophy" , cascade={"all"})
+     * @ORM\OneToMany(targetEntity="TrophyHunter" , mappedBy="trophy")
      * */
     protected $trophyHunter;
 

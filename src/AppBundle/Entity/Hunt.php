@@ -52,7 +52,7 @@ class Hunt
     /**
      * @var Beer The hunted beer.
      *
-     * @ORM\ManyToOne(targetEntity="Beer", inversedBy="hunts")
+     * @ORM\ManyToOne(targetEntity="Beer", inversedBy="hunts", cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(name="beer_id", referencedColumnName="id")
      */
     protected $beer;
@@ -60,7 +60,7 @@ class Hunt
     /**
      * @var Bar The bar where the beer is hunted.
      *
-     * @ORM\ManyToOne(targetEntity="Bar", inversedBy="hunts")
+     * @ORM\ManyToOne(targetEntity="Bar", inversedBy="hunts", cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(name="bar_id", referencedColumnName="id")
      */
     protected $bar;
@@ -68,7 +68,7 @@ class Hunt
     /**
      * @var Hunter the hunter of this hunt.
      *
-     * @ORM\ManyToOne(targetEntity="Hunter", inversedBy="hunts")
+     * @ORM\ManyToOne(targetEntity="Hunter", inversedBy="hunts", cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(name="hunter_id", referencedColumnName="id")
      */
     protected $hunter;
@@ -76,7 +76,7 @@ class Hunt
     /**
      * @var ArrayCollection The link of vote with additional attributes between Hunter and Hunt.
      *
-     * @ORM\OneToMany(targetEntity="Vote", mappedBy="hunt", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="Vote", mappedBy="hunt")
      * */
     protected $vote;
 

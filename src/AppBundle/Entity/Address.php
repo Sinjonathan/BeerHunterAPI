@@ -38,13 +38,13 @@ class Address
     protected $street;
 
     /**
-     * @ORM\ManyToOne(targetEntity="City", inversedBy="streets")
+     * @ORM\ManyToOne(targetEntity="City", inversedBy="streets", cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
      */
     protected $city;
 
     /**
-     * @ORM\OneToOne(targetEntity="Bar", inversedBy="address")
+     * @ORM\OneToOne(targetEntity="Bar", inversedBy="address", cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(name="bar_id", referencedColumnName="id")
      */
     protected $bar;

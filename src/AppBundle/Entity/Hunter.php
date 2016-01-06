@@ -55,14 +55,14 @@ class Hunter extends User
     /**
      * @var ArrayCollection The link of belonging with additional attributes between Hunter and Trophy.
      *
-     * @ORM\OneToMany(targetEntity="TrophyHunter", mappedBy="hunter", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="TrophyHunter", mappedBy="hunter")
      * */
     protected $trophyHunter;
 
     /**
      * @var ArrayCollection The link of vote with additional attributes between Hunter and Hunt.
      *
-     * @ORM\OneToMany(targetEntity="Vote", mappedBy="hunter", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="Vote", mappedBy="hunter")
      * */
     protected $vote;
 

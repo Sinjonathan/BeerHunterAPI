@@ -40,7 +40,7 @@ class City
     /**
      * @var Country the location of the city.
      *
-     * @ORM\ManyToOne(targetEntity="Country", inversedBy="cities")
+     * @ORM\ManyToOne(targetEntity="Country", inversedBy="cities", cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(name="cities_id", referencedColumnName="id")
      */
     protected $country;

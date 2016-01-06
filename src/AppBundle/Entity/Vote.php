@@ -40,7 +40,7 @@ class Vote
     /**
      * @var Hunt The hunt for that the hunter vote.
      *
-     * @ORM\ManyToOne(targetEntity="Hunt", inversedBy="vote")
+     * @ORM\ManyToOne(targetEntity="Hunt", inversedBy="vote", cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(name="Hunt_id", referencedColumnName="id")
      * */
     protected $hunt;
@@ -48,7 +48,7 @@ class Vote
     /**
      * @var Hunter The hunter who voted.
      *
-     * @ORM\ManyToOne(targetEntity="Hunter", inversedBy="vote")
+     * @ORM\ManyToOne(targetEntity="Hunter", inversedBy="vote", cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(name="hunter_id", referencedColumnName="id")
      * */
     protected $hunter;

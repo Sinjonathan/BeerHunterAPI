@@ -35,7 +35,7 @@ class Beer
     /**
      * @var Color the color of a beer.
      *
-     * @ORM\ManyToOne(targetEntity="Color", inversedBy="beers")
+     * @ORM\ManyToOne(targetEntity="Color", inversedBy="beers", cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(name="color_id", referencedColumnName="id")
      */
     protected $color;
@@ -58,7 +58,7 @@ class Beer
     /**
      * @var Country the location where the beer is created.
      *
-     * @ORM\ManyToOne(targetEntity="Country", inversedBy="beers")
+     * @ORM\ManyToOne(targetEntity="Country", inversedBy="beers", cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
      */
     protected $origin;
