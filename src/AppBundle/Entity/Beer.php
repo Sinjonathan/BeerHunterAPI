@@ -41,17 +41,17 @@ class Beer
     protected $color;
 
     /**
-     * @var float The degree of a beer.
+     * @var double The degree of a beer.
      *
      * @ORM\Column(type="decimal", precision=15, scale=2, nullable=false)
-     * @Assert\Type(type="float")
+     * @Assert\Type(type="double")
      */
     protected $degree;
 
     /**
      * @var String The description of a beer.
      *
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $description;
 
@@ -124,7 +124,7 @@ class Beer
     }
 
     /**
-     * @return float
+     * @return double
      */
     public function getDegree()
     {
@@ -132,7 +132,7 @@ class Beer
     }
 
     /**
-     * @param float $degree
+     * @param double $degree
      */
     public function setDegree($degree)
     {
@@ -185,5 +185,10 @@ class Beer
     public function setHunts($hunts)
     {
         $this->hunts = $hunts;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

@@ -38,12 +38,16 @@ class Address
     protected $street;
 
     /**
+     * @var City The city where is located the address.
+     *
      * @ORM\ManyToOne(targetEntity="City", inversedBy="streets", cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
      */
     protected $city;
 
     /**
+     * @var Bar The bar associated to this address.
+     *
      * @ORM\OneToOne(targetEntity="Bar", inversedBy="address", cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(name="bar_id", referencedColumnName="id")
      */
@@ -98,7 +102,7 @@ class Address
     }
 
     /**
-     * @return mixed
+     * @return City
      */
     public function getCity()
     {
@@ -106,7 +110,7 @@ class Address
     }
 
     /**
-     * @param mixed $city
+     * @param City $city
      */
     public function setCity($city)
     {
@@ -114,7 +118,7 @@ class Address
     }
 
     /**
-     * @return mixed
+     * @return Bar
      */
     public function getBar()
     {
@@ -122,10 +126,15 @@ class Address
     }
 
     /**
-     * @param mixed $bar
+     * @param Bar $bar
      */
     public function setBar($bar)
     {
         $this->bar = $bar;
+    }
+
+    public function __toString()
+    {
+        return $this->number . ' ' . $this->street . ', ' . $this->city;
     }
 }

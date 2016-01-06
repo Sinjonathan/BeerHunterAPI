@@ -135,4 +135,9 @@ class Bar
     {
         $this->hunts = $hunts;
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 }

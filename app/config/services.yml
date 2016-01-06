@@ -53,3 +53,33 @@ services:
         parent:    "api.resource"
         arguments: [ "AppBundle\\Entity\\Vote" ]
         tags:      [ { name: "api.resource" } ]
+
+    admin.color:
+        class: AppBundle\Admin\ColorAdmin
+        arguments: [~, AppBundle\Entity\Color, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Color }
+
+    admin.beer:
+        class: AppBundle\Admin\BeerAdmin
+        arguments: [~, AppBundle\Entity\Beer, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Beer }
+
+    admin.country:
+        class: AppBundle\Admin\CountryAdmin
+        arguments: [~, AppBundle\Entity\Country, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Country }
+
+    admin.city:
+        class: AppBundle\Admin\CityAdmin
+        arguments: [~, AppBundle\Entity\City, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: City }
+
+    admin.address:
+        class: AppBundle\Admin\AddressAdmin
+        arguments: [~, AppBundle\Entity\Address, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Address }
