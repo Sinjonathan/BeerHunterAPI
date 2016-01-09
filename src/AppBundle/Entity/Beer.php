@@ -14,8 +14,6 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Beer
 {
-
-
     /**
      * @var int
      *

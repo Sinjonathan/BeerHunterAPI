@@ -12,8 +12,7 @@ class CityAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('name', 'text');
-        $formMapper->add('country', 'entity', array('class' => 'AppBundle\Entity\Country', 'property' => 'name',));
-        $formMapper->add('streets', 'entity', array('class' => 'AppBundle\Entity\Address', 'property' => 'name', 'required' => false ));
+        $formMapper->add('country', 'entity', array('class' => 'AppBundle\Entity\Country',));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -26,6 +25,6 @@ class CityAdmin extends Admin
         $listMapper->addIdentifier('id');
         $listMapper->addIdentifier('name');
         $listMapper->addIdentifier('country');
-        $listMapper->addIdentifier('streets');
+        $listMapper->addIdentifier('addresses');
     }
 }

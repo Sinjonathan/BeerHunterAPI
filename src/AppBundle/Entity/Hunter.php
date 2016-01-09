@@ -25,6 +25,28 @@ class Hunter extends User
     protected $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=false)
+     */
+    protected $username;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Email(message = "The email '{{ value }}' is not a valid email.",checkMX = true))
+     */
+    protected $email;
+
+    /**
+     * @var boolean
+     *
+         * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $enabled;
+
+    /**
      * @var int The potential score of the hunter if all his active hunt are accepted.
      *
      * @ORM\Column(type="integer", nullable=false)
@@ -64,7 +86,7 @@ class Hunter extends User
      *
      * @ORM\OneToMany(targetEntity="Vote", mappedBy="hunter")
      * */
-    protected $vote;
+    protected $votes;
 
 
     // Overrides to fix Nelmio Api Doc
@@ -75,7 +97,7 @@ class Hunter extends User
         parent::__construct();
         $this->hunts = new ArrayCollection();
         $this->trophyHunter = new ArrayCollection();
-        $this->vote = new ArrayCollection();
+        $this->votes = new ArrayCollection();
     }
 
     /**
@@ -177,16 +199,16 @@ class Hunter extends User
     /**
      * @return ArrayCollection
      */
-    public function getVote()
+    public function getVotes()
     {
-        return $this->vote;
+        return $this->votes;
     }
 
     /**
-     * @param ArrayCollection $vote
+     * @param ArrayCollection $votes
      */
-    public function setVote($vote)
+    public function setVotes($votes)
     {
-        $this->vote = $vote;
+        $this->votes = $votes;
     }
 }

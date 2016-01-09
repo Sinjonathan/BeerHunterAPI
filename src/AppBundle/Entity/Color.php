@@ -89,4 +89,9 @@ class Color
     {
         $this->beers = $beers;
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 }

@@ -14,8 +14,6 @@ class CountryAdmin extends Admin
     {
         $formMapper->add('name', 'text');
         $formMapper->add('short', 'text', array('constraints' => new Length(array('max' => 3))));
-        $formMapper->add('cities', 'entity', array('class' => 'AppBundle\Entity\City', 'property' => 'name', 'required' => false ));
-        $formMapper->add('beers', 'entity', array('class' => 'AppBundle\Entity\Beer', 'property' => 'name', 'required' => false ));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -28,7 +26,7 @@ class CountryAdmin extends Admin
         $listMapper->addIdentifier('id');
         $listMapper->addIdentifier('name');
         $listMapper->addIdentifier('short');
-        //$listMapper->addIdentifier('cities');
+        $listMapper->addIdentifier('cities');
         $listMapper->addIdentifier('beers');
     }
 }

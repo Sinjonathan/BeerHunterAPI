@@ -83,3 +83,39 @@ services:
         arguments: [~, AppBundle\Entity\Address, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Address }
+
+    admin.hunter:
+        class: AppBundle\Admin\HunterAdmin
+        arguments: [~, AppBundle\Entity\Hunter, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Hunter }
+
+    admin.trophy:
+        class: AppBundle\Admin\TrophyAdmin
+        arguments: [~, AppBundle\Entity\Trophy, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Trophy }
+
+    admin.bar:
+        class: AppBundle\Admin\BarAdmin
+        arguments: [~, AppBundle\Entity\Bar, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Bar }
+
+    admin.hunt:
+        class: AppBundle\Admin\HuntAdmin
+        arguments: [~, AppBundle\Entity\Hunt, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Hunt }
+
+    admin.trophyHunter:
+        class: AppBundle\Admin\TrophyHunterAdmin
+        arguments: [~, AppBundle\Entity\TrophyHunter, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: TrophyHunter }
+
+    admin.vote:
+        class: AppBundle\Admin\VoteAdmin
+        arguments: [~, AppBundle\Entity\Vote, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Vote }

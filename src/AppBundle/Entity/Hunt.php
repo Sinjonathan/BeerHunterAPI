@@ -78,14 +78,14 @@ class Hunt
      *
      * @ORM\OneToMany(targetEntity="Vote", mappedBy="hunt")
      * */
-    protected $vote;
+    protected $votes;
 
     protected $status = Hunt::STATUS_ACTIVE;
 
     public function __construct()
     {
         $this->launchDate = new \DateTime();
-        $this->vote = new ArrayCollection();
+        $this->votes = new ArrayCollection();
     }
 
     /**
@@ -219,16 +219,21 @@ class Hunt
     /**
      * @return ArrayCollection
      */
-    public function getVote()
+    public function getVotes()
     {
-        return $this->vote;
+        return $this->votes;
     }
 
     /**
-     * @param ArrayCollection $vote
+     * @param ArrayCollection $votes
      */
-    public function setVote($vote)
+    public function setVotes($votes)
     {
-        $this->vote = $vote;
+        $this->votes = $votes;
+    }
+
+    public function __toString()
+    {
+        return $this->id . '';
     }
 }

@@ -35,7 +35,7 @@ class City
      *
      * @ORM\OneToMany(targetEntity="Address", mappedBy="city")
      */
-    protected $streets;
+    protected $addresses;
 
     /**
      * @var Country the location of the city.
@@ -47,7 +47,7 @@ class City
 
     public function __construct()
     {
-        $this->streets = new ArrayCollection();
+        $this->addresses = new ArrayCollection();
     }
 
     /**
@@ -85,17 +85,17 @@ class City
     /**
      * @return Address
      */
-    public function getStreets()
+    public function getAddresses()
     {
-        return $this->streets;
+        return $this->addresses;
     }
 
     /**
-     * @param Address $streets
+     * @param Address $addresses
      */
-    public function setStreets($streets)
+    public function setAddresses($addresses)
     {
-        $this->streets = $streets;
+        $this->addresses = $addresses;
     }
 
     /**
@@ -116,6 +116,6 @@ class City
 
     public function __toString()
     {
-        return $this->name . ', ' . $this->country;
+        return $this->name;
     }
 }

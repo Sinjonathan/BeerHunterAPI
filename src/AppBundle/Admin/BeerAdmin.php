@@ -12,10 +12,10 @@ class BeerAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('name', 'text');
-        $formMapper->add('color', 'entity', array('class' => 'AppBundle\Entity\Color', 'property' => 'name',));
-        //$formMapper->add('degree', 'integer', array('scale' => 2));
+        $formMapper->add('color', 'entity', array('class' => 'AppBundle\Entity\Color'));
+        $formMapper->add('degree', 'number', array('scale' => 2));
         $formMapper->add('description', 'textarea', array('required' => false));
-        $formMapper->add('origin', 'entity', array('class' => 'AppBundle\Entity\Country', 'property' => 'name',));
+        $formMapper->add('origin', 'entity', array('class' => 'AppBundle\Entity\Country'));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -25,6 +25,12 @@ class BeerAdmin extends Admin
 
     protected function configureListFields(ListMapper $listMapper)
     {
+        $listMapper->addIdentifier('id');
         $listMapper->addIdentifier('name');
+        $listMapper->addIdentifier('color');
+        $listMapper->addIdentifier('degree');
+        $listMapper->addIdentifier('description');
+        $listMapper->addIdentifier('origin');
+        $listMapper->addIdentifier('hunts');
     }
 }

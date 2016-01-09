@@ -7,22 +7,25 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class ColorAdmin extends Admin
+class TrophyHunterAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('name', 'text');
+        $formMapper->add('unlockDate', 'date');
+        $formMapper->add('trophy', 'entity', array('class' => 'AppBundle\Entity\Trophy'));
+        $formMapper->add('hunter', 'entity', array('class' => 'AppBundle\Entity\Hunter'));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('name');
+        $datagridMapper->add('id');
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->addIdentifier('id');
-        $listMapper->addIdentifier('name');
-        $listMapper->addIdentifier('beers');
+        $listMapper->addIdentifier('unlockDate');
+        $listMapper->addIdentifier('trophy');
+        $listMapper->addIdentifier('hunter');
     }
 }

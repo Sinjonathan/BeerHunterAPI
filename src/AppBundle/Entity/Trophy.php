@@ -112,4 +112,9 @@ class Trophy
     {
         $this->trophyHunter = $trophyHunter;
     }
+
+    public function __toString()
+    {
+        return $this->label;
+    }
 }

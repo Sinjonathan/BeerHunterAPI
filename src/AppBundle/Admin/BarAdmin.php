@@ -7,11 +7,13 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class ColorAdmin extends Admin
+class BarAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('name', 'text');
+        $formMapper->add('description', 'textarea', array('required' => false));
+        $formMapper->add('address', 'entity', array('class' => 'AppBundle\Entity\Address',));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -23,6 +25,8 @@ class ColorAdmin extends Admin
     {
         $listMapper->addIdentifier('id');
         $listMapper->addIdentifier('name');
-        $listMapper->addIdentifier('beers');
+        $listMapper->addIdentifier('description');
+        $listMapper->addIdentifier('address');
+        $listMapper->addIdentifier('hunts');
     }
 }

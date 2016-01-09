@@ -40,7 +40,8 @@ class Bar
     /**
      * @var Address The address of the bar.
      *
-     * @ORM\OneToOne(targetEntity="Address", mappedBy="bar")
+     * @ORM\OneToOne(targetEntity="Address", inversedBy="bar", cascade={"persist"}, fetch="EAGER")
+     * @ORM\JoinColumn(name="address_id", referencedColumnName="id")
      */
     protected $address;
 

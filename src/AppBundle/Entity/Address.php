@@ -40,7 +40,7 @@ class Address
     /**
      * @var City The city where is located the address.
      *
-     * @ORM\ManyToOne(targetEntity="City", inversedBy="streets", cascade={"persist"}, fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="City", inversedBy="addresses", cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
      */
     protected $city;
@@ -48,8 +48,8 @@ class Address
     /**
      * @var Bar The bar associated to this address.
      *
-     * @ORM\OneToOne(targetEntity="Bar", inversedBy="address", cascade={"persist"}, fetch="EAGER")
-     * @ORM\JoinColumn(name="bar_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="Bar", mappedBy="address")
+     *
      */
     protected $bar;
 
@@ -135,6 +135,6 @@ class Address
 
     public function __toString()
     {
-        return $this->number . ' ' . $this->street . ', ' . $this->city;
+        return $this->number . ' ' . $this->street;
     }
 }
