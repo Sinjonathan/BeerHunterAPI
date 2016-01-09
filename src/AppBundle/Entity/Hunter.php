@@ -12,6 +12,23 @@ use FOS\UserBundle\Model\User;
  *
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
+ * @ORM\AttributeOverrides({
+ *      @ORM\AttributeOverride(name="username",
+ *          column=@ORM\Column(type="string", nullable=false)
+ *      ),
+ *     @ORM\AttributeOverride(name="email",
+ *          column=@ORM\Column(type="string", nullable=true),
+ *      ),
+ *     @ORM\AttributeOverride(name="password",
+ *          column=@ORM\Column(type="string", nullable=true),
+ *      ),
+ *     @ORM\AttributeOverride(name="enabled",
+ *          column=@ORM\Column(type="boolean", nullable=true)
+ *      ),
+ *     @ORM\AttributeOverride(name="username",
+ *          column=@ORM\Column(type="string", nullable=false)
+ *      ),
+ * })
  */
 class Hunter extends User
 {
@@ -23,28 +40,6 @@ class Hunter extends User
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=false)
-     */
-    protected $username;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=true)
-     * @Assert\Email(message = "The email '{{ value }}' is not a valid email.",checkMX = true))
-     */
-    protected $email;
-
-    /**
-     * @var boolean
-     *
-         * @ORM\Column(type="boolean", nullable=true)
-     */
-    protected $enabled;
 
     /**
      * @var int The potential score of the hunter if all his active hunt are accepted.

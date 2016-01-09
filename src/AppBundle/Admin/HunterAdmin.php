@@ -13,6 +13,7 @@ class HunterAdmin extends Admin
     {
         $formMapper->add('username', 'text');
         $formMapper->add('email', 'text');
+        $formMapper->add('plainPassword', 'text');
         $formMapper->add('enabled', 'checkbox', array('required' => false));
         $formMapper->add('potentialScore', 'integer');
         $formMapper->add('validScore', 'integer');
@@ -28,6 +29,7 @@ class HunterAdmin extends Admin
     {
         $listMapper->addIdentifier('id');
         $listMapper->add('username');
+        //Up$listMapper->add('password');
         $listMapper->add('email');
         $listMapper->add('enabled');
         $listMapper->add('potentialScore');
