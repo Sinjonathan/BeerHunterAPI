@@ -25,7 +25,7 @@ class Vote
     /**
      * @var \DateTime Date of the vote.
      *
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="date", nullable=false)
      * @Assert\Date
      */
     protected $dateVote;
@@ -52,6 +52,11 @@ class Vote
      * @ORM\JoinColumn(name="hunter_id", referencedColumnName="id")
      */
     protected $hunter;
+
+    public function __construct()
+    {
+        $this->dateVote = new \DateTime();
+    }
 
     /**
      * @return int

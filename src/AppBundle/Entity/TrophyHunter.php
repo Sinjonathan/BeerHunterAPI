@@ -110,4 +110,9 @@ class TrophyHunter
     {
         $this->hunter = $hunter;
     }
+
+    public function __toString()
+    {
+        return $this->id . '';
+    }
 }

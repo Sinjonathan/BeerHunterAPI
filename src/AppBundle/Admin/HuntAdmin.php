@@ -29,7 +29,7 @@ class HuntAdmin extends Admin
     {
         $listMapper->addIdentifier('id');
         $listMapper->addIdentifier('isPressure');
-        $listMapper->addIdentifier('date');
+        $listMapper->addIdentifier('launchDate');
         $listMapper->addIdentifier('balance');
         $listMapper->addIdentifier('beer');
         $listMapper->addIdentifier('bar');

@@ -13,7 +13,6 @@ class TrophyAdmin extends Admin
     {
         $formMapper->add('label', 'text');
         $formMapper->add('description', 'textarea');
-        //$formMapper->add('trophyHunter', 'entity', array('class' => 'AppBundle\Entity\TrophyHunter', 'property' => 'name',));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -26,6 +25,6 @@ class TrophyAdmin extends Admin
         $listMapper->addIdentifier('id');
         $listMapper->addIdentifier('label');
         $listMapper->addIdentifier('description');
-        //$listMapper->addIdentifier('trophyHunter');
+        $listMapper->addIdentifier('trophyHunter');
     }
 }
