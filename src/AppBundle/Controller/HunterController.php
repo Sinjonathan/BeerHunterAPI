@@ -31,9 +31,20 @@ class HunterController extends Controller
         if (!($request->request->has('_username') && $request->request->has('_email') && $request->request->has('_password'))) {
             throw new HttpException(400, "Parameters required !");
         }
+
         $username = $request->request->get('_username');
         $email = $request->request->get('_email');
         $password = $request->request->get('_password');
+
+
+        if (!($userManager->findUserByEmail($email) === null)){
+            throw new HttpException(400, "Email exist !");
+        }
+
+        if (!($userManager->findUserByUsername($username) === null)){
+            throw new HttpException(400, "User exist !");
+        }
+
         $user = $userManager->createUser();
         $pwdFactory = $this->get('security.encoder_factory');
         $encoder = $pwdFactory->getEncoder($user);
