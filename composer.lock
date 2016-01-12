@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cd354109b9eb00a2c6f29bdd4cf6afc3",
-    "content-hash": "81d820b650739fa33e452014ca13aa3f",
+    "hash": "aef8a68f533cff921ed6a780a6f75139",
+    "content-hash": "6e3cf68afcc93b02755343942defc333",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -4864,7 +4864,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "php": 5,
         "nelmio/api-doc-bundle": 20,
         "friendsofsymfony/user-bundle": 20,
         "behatch/contexts": 20
@@ -4872,7 +4871,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "~7.0.0RC7"
+        "php": ">=5.4"
     },
     "platform-dev": []
 }

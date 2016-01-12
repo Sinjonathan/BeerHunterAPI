@@ -16,7 +16,7 @@ parameters:
 
     locale:            fr
 
-    cors_allow_origin: *
+    cors_allow_origin: "*"
 
     api_name:          BeerHunter
     api_description:   BeerHunter
