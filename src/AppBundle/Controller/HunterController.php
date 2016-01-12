@@ -12,11 +12,23 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+
 class HunterController extends Controller
 {
     /**
-     * @Route("/post_user", name="post_user")
+     * @Route("/post_user", name="Add an user")
      * @Method({"POST"})
+     *
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Create a new user",
+     *  parameters={
+     *      {"name"="_name", "dataType"="string", "required"=true, "description"="User name"},
+     *      {"name"="_password", "dataType"="string", "required"=true, "description"="User password"},
+     *      {"name"="_email", "dataType"="string", "required"=true, "description"="User email"}
+     *  }
+     * )
      *
      * @param Request $request
      * @return null|RedirectResponse|\Symfony\Component\HttpFoundation\Response
