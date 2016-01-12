@@ -92,6 +92,7 @@ fos_user:
     firewall_name: main
     user_class: AppBundle\Entity\Hunter
 
+#Sonata block
 sonata_block:
     default_contexts: [cms]
     blocks:
