@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Controller;
+use Dunglas\ApiBundle\JsonLd\Response;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
@@ -11,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\Response as RSP;
 
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
@@ -24,7 +26,7 @@ class HunterController extends Controller
      *  resource=true,
      *  description="Create a new user",
      *  parameters={
-     *      {"name"="_name", "dataType"="string", "required"=true, "description"="User name"},
+     *      {"name"="_username", "dataType"="string", "required"=true, "description"="User name"},
      *      {"name"="_password", "dataType"="string", "required"=true, "description"="User password"},
      *      {"name"="_email", "dataType"="string", "required"=true, "description"="User email"}
      *  }
@@ -81,5 +83,103 @@ class HunterController extends Controller
         }
         $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
         return $response;
+    }
+
+    /**
+     * @Route("/post_login", name="Log the user")
+     * @Method({"POST"})
+     *
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Log a user",
+     *  parameters={
+     *      {"name"="_username", "dataType"="string", "required"=true, "description"="User name"},
+     *      {"name"="_password", "dataType"="string", "required"=true, "description"="User password"}
+     *  }
+     * )
+     *
+     * @param Request $request
+     * @return null|RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function postLoginAction(Request $request) {
+        /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
+        $formFactory = $this->get('fos_user.registration.form.factory');
+        /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
+        $userManager = $this->get('fos_user.user_manager');
+        /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
+        $dispatcher = $this->get('event_dispatcher');
+
+        $em = $this->getDoctrine()->getManager();
+
+        if (!($request->request->has('_username') && $request->request->has('_password'))) {
+            throw new HttpException(400, "Parameters required !");
+        }
+
+        $username = $request->request->get('_username');
+        $password = $request->request->get('_password');
+
+        $user = $em->getRepository('AppBundle:Hunter')->findByUsername($username)[0];
+        if ($user === null){
+            throw new HttpException(400, "User not exist !");
+        }
+
+        $pwdFactory = $this->get('security.encoder_factory');
+
+        $encoder = $pwdFactory->getEncoder($user);
+
+        if($encoder->IsPasswordValid($user->getPassword(),$password,$user->getSalt())) {
+            $user->setOnline(true);
+            $em->flush();
+        } else {
+            throw new HttpException(400, "Error in couple login/password !");
+        }
+
+        return new RSP();
+    }
+
+    /**
+     * @Route("/post_logout", name="Disconnect the user")
+     * @Method({"POST"})
+     *
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Disconnect a user",
+     *  parameters={
+     *      {"name"="_username", "dataType"="string", "required"=true, "description"="User name"}
+     *  }
+     * )
+     *
+     * @param Request $request
+     * @return null|RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function postLogoutAction(Request $request) {
+        /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
+        $formFactory = $this->get('fos_user.registration.form.factory');
+        /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
+        $userManager = $this->get('fos_user.user_manager');
+        /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
+        $dispatcher = $this->get('event_dispatcher');
+
+        $em = $this->getDoctrine()->getManager();
+
+        if (!($request->request->has('_username'))) {
+            throw new HttpException(400, "Parameters required !");
+        }
+
+        $username = $request->request->get('_username');
+
+        $user = $em->getRepository('AppBundle:Hunter')->findByUsername($username)[0];
+        if ($user === null){
+            throw new HttpException(400, "User not exist !");
+        }
+
+        if($user->IsOnline()) {
+            $user->setOnline(false);
+            $em->flush();
+        } else {
+            throw new HttpException(400, "Already disconnect");
+        }
+
+        return new RSP();
     }
 }

@@ -32,7 +32,7 @@ class HunterAdmin extends Admin
         //Up$listMapper->add('password');
         $listMapper->add('email');
         $listMapper->add('enabled');
-        $listMapper->add('isOnline');
+        $listMapper->add('online');
         $listMapper->add('potentialScore');
         $listMapper->add('validScore');
         $listMapper->add('weeklyScore');

@@ -88,7 +88,7 @@ class Hunter extends User
      *
      * @ORM\Column(type="boolean", nullable=true)
      */
-    protected $isOnline = false;
+    protected $online = false;
 
     // Overrides to fix Nelmio Api Doc
     protected $groups;
@@ -216,16 +216,16 @@ class Hunter extends User
     /**
      * @return boolean
      */
-    public function isIsOnline()
+    public function isOnline()
     {
-        return $this->isOnline;
+        return $this->online;
     }
 
     /**
-     * @param boolean $isOnline
+     * @param boolean $online
      */
-    public function setIsOnline($isOnline)
+    public function setOnline($online)
     {
-        $this->isOnline = $isOnline;
+        $this->online = $online;
     }
 }
