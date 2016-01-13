@@ -83,6 +83,12 @@ class Hunter extends User
      * */
     protected $votes;
 
+    /**
+     * @var boolean If the hunter is actually connected or not.
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $isOnline = false;
 
     // Overrides to fix Nelmio Api Doc
     protected $groups;
@@ -205,5 +211,21 @@ class Hunter extends User
     public function setVotes($votes)
     {
         $this->votes = $votes;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isIsOnline()
+    {
+        return $this->isOnline;
+    }
+
+    /**
+     * @param boolean $isOnline
+     */
+    public function setIsOnline($isOnline)
+    {
+        $this->isOnline = $isOnline;
     }
 }
