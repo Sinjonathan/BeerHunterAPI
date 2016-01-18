@@ -46,6 +46,22 @@ class Bar
     protected $address;
 
     /**
+     * @var double The longitude of the bar.
+     *
+     * @ORM\Column(type="decimal", precision=15, scale=12, nullable=false)
+     * @Assert\Type(type="double")
+     */
+    protected $longitude;
+
+    /**
+     * @var double The latitude of the bar.
+     *
+     * @ORM\Column(type="decimal", precision=15, scale=12, nullable=false)
+     * @Assert\Type(type="double")
+     */
+    protected $latitude;
+
+    /**
      * @var ArrayCollection The hunts in this bar.
      *
      * @ORM\OneToMany(targetEntity="Hunt", mappedBy="bar")
@@ -135,6 +151,38 @@ class Bar
     public function setHunts($hunts)
     {
         $this->hunts = $hunts;
+    }
+
+    /**
+     * @return float
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
+    }
+
+    /**
+     * @param float $longitude
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+    }
+
+    /**
+     * @return float
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * @param float $latitude
+     */
+    public function setLatitude($latitude)
+    {
+        $this->latitude = $latitude;
     }
 
     public function __toString()

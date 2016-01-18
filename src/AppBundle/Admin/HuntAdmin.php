@@ -14,6 +14,7 @@ class HuntAdmin extends Admin
         $formMapper->add('launchDate', 'date');
         $formMapper->add('isPressure', 'checkbox', array('required' => false));
         $formMapper->add('balance', 'integer');
+        $formMapper->add('price', 'number', array('scale' => 2));
         $formMapper->add('beer', 'entity', array('class' => 'AppBundle\Entity\Beer'));
         $formMapper->add('bar', 'entity', array('class' => 'AppBundle\Entity\Bar'));
         $formMapper->add('hunter', 'entity', array('class' => 'AppBundle\Entity\Hunter'));
@@ -30,6 +31,7 @@ class HuntAdmin extends Admin
         $listMapper->addIdentifier('id');
         $listMapper->addIdentifier('isPressure');
         $listMapper->addIdentifier('launchDate');
+        $listMapper->addIdentifier('price');
         $listMapper->addIdentifier('balance');
         $listMapper->addIdentifier('beer');
         $listMapper->addIdentifier('bar');

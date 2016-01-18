@@ -50,6 +50,14 @@ class Hunt
     protected $balance = 0;
 
     /**
+     * @var double The price of the beer.
+     *
+     * @ORM\Column(type="decimal", precision=15, scale=2, nullable=false)
+     * @Assert\Type(type="double")
+     */
+    protected $price;
+
+    /**
      * @var Beer The hunted beer.
      *
      * @ORM\ManyToOne(targetEntity="Beer", inversedBy="hunts", cascade={"persist"}, fetch="EAGER")
@@ -230,6 +238,22 @@ class Hunt
     public function setVotes($votes)
     {
         $this->votes = $votes;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param float $price
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
     }
 
     public function __toString()

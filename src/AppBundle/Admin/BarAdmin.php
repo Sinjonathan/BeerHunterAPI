@@ -13,6 +13,8 @@ class BarAdmin extends Admin
     {
         $formMapper->add('name', 'text');
         $formMapper->add('description', 'textarea', array('required' => false));
+        $formMapper->add('longitude', 'number', array('scale' => 12));
+        $formMapper->add('latitude', 'number', array('scale' => 12));
         $formMapper->add('address', 'entity', array('class' => 'AppBundle\Entity\Address',));
     }
 
@@ -26,6 +28,8 @@ class BarAdmin extends Admin
         $listMapper->addIdentifier('id');
         $listMapper->addIdentifier('name');
         $listMapper->addIdentifier('description');
+        $listMapper->addIdentifier('longitude');
+        $listMapper->addIdentifier('latitude');
         $listMapper->addIdentifier('address');
         $listMapper->addIdentifier('hunts');
     }
