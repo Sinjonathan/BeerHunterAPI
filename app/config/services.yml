@@ -29,9 +29,16 @@ services:
         arguments: [ "AppBundle\\Entity\\Country" ]
         tags:      [ { name: "api.resource" } ]
 
+    resource.hunt.search_filter:
+        parent:    "api.doctrine.orm.search_filter"
+        arguments: [ { beer: "exact", bar: "exact", hunter: "exact"  } ]
+
     resource.hunt:
         parent:    "api.resource"
         arguments: [ "AppBundle\\Entity\\Hunt" ]
+        calls:
+            -      method:    "initFilters"
+                   arguments: [ [ "@resource.hunt.search_filter" ] ]
         tags:      [ { name: "api.resource" } ]
 
     resource.hunter.search_filter:
