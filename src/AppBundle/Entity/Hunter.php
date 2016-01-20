@@ -10,7 +10,7 @@ use FOS\UserBundle\Model\User;
 /**
  * A hunter.
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\HunterRepository")
  * @ORM\Table(name="fos_user")
  * @ORM\AttributeOverrides({
  *      @ORM\AttributeOverride(name="username",
