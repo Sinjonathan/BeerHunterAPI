@@ -7,20 +7,26 @@ services:
     resource.bar:
         parent:    "api.resource"
         arguments: [ "AppBundle\\Entity\\Bar" ]
+        calls:
+            -      method:    "initFilters"
+                   arguments: [ [ "@resource.bar.search_filter" ] ]
         tags:      [ { name: "api.resource" } ]
 
     resource.bar.search_filter:
-            parent:    "api.doctrine.orm.search_filter"
-            arguments: [ { name: "exact" } ]
+        parent:    "api.doctrine.orm.search_filter"
+        arguments: [ { name: "exact" } ]
 
     resource.beer:
         parent:    "api.resource"
         arguments: [ "AppBundle\\Entity\\Beer" ]
+        calls:
+            -      method:    "initFilters"
+                   arguments: [ [ "@resource.beer.search_filter" ] ]
         tags:      [ { name: "api.resource" } ]
 
     resource.beer.search_filter:
-            parent:    "api.doctrine.orm.search_filter"
-            arguments: [ { name: "exact" } ]
+        parent:    "api.doctrine.orm.search_filter"
+        arguments: [ { name: "exact" } ]
 
     resource.city:
         parent:    "api.resource"
