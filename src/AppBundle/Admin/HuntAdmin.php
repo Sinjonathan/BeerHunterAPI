@@ -15,8 +15,8 @@ class HuntAdmin extends Admin
         $formMapper->add('isPressure', 'checkbox', array('required' => false));
         $formMapper->add('balance', 'integer');
         $formMapper->add('price', 'number', array('scale' => 2));
-        $formMapper->add('beer', 'entity', array('class' => 'AppBundle\Entity\Beer'));
-        $formMapper->add('bar', 'entity', array('class' => 'AppBundle\Entity\Bar'));
+        $formMapper->add('beer', 'sonata_type_model', array('class' => 'AppBundle\Entity\Beer'));
+        $formMapper->add('bar', 'sonata_type_model', array('class' => 'AppBundle\Entity\Bar'));
         $formMapper->add('hunter', 'entity', array('class' => 'AppBundle\Entity\Hunter'));
         $formMapper->add('status', 'integer');
     }

@@ -13,7 +13,7 @@ class AddressAdmin extends Admin
     {
         $formMapper->add('number', 'integer');
         $formMapper->add('street', 'text');
-        $formMapper->add('city', 'entity', array('class' => 'AppBundle\Entity\City'));
+        $formMapper->add('city', 'sonata_type_model', array('class' => 'AppBundle\Entity\City',));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)

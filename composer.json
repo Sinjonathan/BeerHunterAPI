@@ -22,10 +22,11 @@
         "nelmio/cors-bundle": "~1.4",
         "nelmio/api-doc-bundle": "~2.9@dev",
         "friendsofsymfony/http-cache-bundle": "~1.0",
-        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "friendsofsymfony/user-bundle": "~1.3",
         "sonata-project/admin-bundle": "2.3.*",
         "sonata-project/doctrine-orm-admin-bundle": "^2.3",
-        "lexik/jwt-authentication-bundle": "^1.3"
+        "lexik/jwt-authentication-bundle": "^1.3",
+        "sonata-project/user-bundle": "^2.2"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",

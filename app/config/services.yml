@@ -98,12 +98,6 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, label: Address }
 
-    admin.hunter:
-        class: AppBundle\Admin\HunterAdmin
-        arguments: [~, AppBundle\Entity\Hunter, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, label: Hunter }
-
     admin.trophy:
         class: AppBundle\Admin\TrophyAdmin
         arguments: [~, AppBundle\Entity\Trophy, ~]

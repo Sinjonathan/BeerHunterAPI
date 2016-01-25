@@ -12,7 +12,7 @@ class CityAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('name', 'text');
-        $formMapper->add('country', 'entity', array('class' => 'AppBundle\Entity\Country',));
+        $formMapper->add('country', 'sonata_type_model', array('class' => 'AppBundle\Entity\Country',));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)

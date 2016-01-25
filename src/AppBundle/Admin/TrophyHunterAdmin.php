@@ -12,7 +12,7 @@ class TrophyHunterAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('unlockDate', 'date');
-        $formMapper->add('trophy', 'entity', array('class' => 'AppBundle\Entity\Trophy'));
+        $formMapper->add('trophy', 'sonata_type_model', array('class' => 'AppBundle\Entity\Trophy'));
         $formMapper->add('hunter', 'entity', array('class' => 'AppBundle\Entity\Hunter'));
     }
 

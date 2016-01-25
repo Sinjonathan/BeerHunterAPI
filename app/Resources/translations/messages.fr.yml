@@ -1,0 +1,53 @@
+Color: Couleur
+Beer: Bière
+Beers: Bières
+Country: Pays
+City: Ville
+Cities: Villes
+Address: Adresse
+Addresses: Adresses
+Trophy: Trophée
+Bar: Bar
+Hunt: Chasse
+Hunts: Chasses
+Hunter: Chasseur
+Hunters: Chasseurs
+TrophyHunter: TrophéeChasseur
+Trophy Hunter: Trophée Chasseur
+Vote: Vote
+Votes: Votes
+contient: contient
+ne contient pas: ne contient pas
+est égal à: est égal à
+Color List: Liste des Couleurs
+Beer List: Liste des Bières
+City List: Liste des Villes
+Bar List: Liste des Bars
+Hunt List: Liste des Chasses
+Address List: Liste des Adresses
+Trophy List: Liste des Trophées
+Trophy Hunter List: Liste des Trophées Chasseurs
+Vote List: Liste des Votes
+Id: Id
+Name: Nom
+Degree:	Degré
+Label: Label
+Description: Description
+Origin: Origine
+Short: Raccourci
+Number: Numéro
+Street: Rue
+Longitude: Longitude
+Latitude: Latitude
+Status: Status
+Balance: Balance
+Price: Prix
+Is Pressure: Pression
+Launch Date: Date de Lancement
+Unlock Date: Date de gain
+Date Vote: Date de vote
+=: =
+>=: >=
+>: >
+<=: <=
+<: <

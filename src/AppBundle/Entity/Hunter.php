@@ -5,35 +5,19 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use FOS\UserBundle\Model\User;
+#use FOS\UserBundle\Model\User;
+use Sonata\UserBundle\Entity\BaseUser;
 
 /**
  * A hunter.
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\HunterRepository")
  * @ORM\Table(name="fos_user")
- * @ORM\AttributeOverrides({
- *      @ORM\AttributeOverride(name="username",
- *          column=@ORM\Column(type="string", nullable=false)
- *      ),
- *     @ORM\AttributeOverride(name="email",
- *          column=@ORM\Column(type="string", nullable=true),
- *      ),
- *     @ORM\AttributeOverride(name="password",
- *          column=@ORM\Column(type="string", nullable=true),
- *      ),
- *     @ORM\AttributeOverride(name="enabled",
- *          column=@ORM\Column(type="boolean", nullable=true)
- *      ),
- *     @ORM\AttributeOverride(name="username",
- *          column=@ORM\Column(type="string", nullable=false)
- *      ),
- * })
  */
-class Hunter extends User
+class Hunter extends BaseUser
 {
     /**
-     * @var int
+     * @var int string
      *
      * @ORM\Column(type="integer")
      * @ORM\Id

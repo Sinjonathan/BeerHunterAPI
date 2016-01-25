@@ -15,7 +15,7 @@ class BeerAdmin extends Admin
         $formMapper->add('color', 'entity', array('class' => 'AppBundle\Entity\Color'));
         $formMapper->add('degree', 'number', array('scale' => 2));
         $formMapper->add('description', 'textarea', array('required' => false));
-        $formMapper->add('origin', 'entity', array('class' => 'AppBundle\Entity\Country'));
+        $formMapper->add('origin', 'sonata_type_model', array('class' => 'AppBundle\Entity\Country'));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
