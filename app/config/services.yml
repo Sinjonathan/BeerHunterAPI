@@ -9,10 +9,18 @@ services:
         arguments: [ "AppBundle\\Entity\\Bar" ]
         tags:      [ { name: "api.resource" } ]
 
+    resource.bar.search_filter:
+            parent:    "api.doctrine.orm.search_filter"
+            arguments: [ { name: "exact" } ]
+
     resource.beer:
         parent:    "api.resource"
         arguments: [ "AppBundle\\Entity\\Beer" ]
         tags:      [ { name: "api.resource" } ]
+
+    resource.beer.search_filter:
+            parent:    "api.doctrine.orm.search_filter"
+            arguments: [ { name: "exact" } ]
 
     resource.city:
         parent:    "api.resource"
