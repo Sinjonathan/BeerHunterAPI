@@ -15,7 +15,9 @@ class BarAdmin extends Admin
         $formMapper->add('description', 'textarea', array('required' => false));
         $formMapper->add('longitude', 'number', array('scale' => 12));
         $formMapper->add('latitude', 'number', array('scale' => 12));
-        $formMapper->add('address', 'sonata_type_model', array('class' => 'AppBundle\Entity\Address',));
+        $formMapper->add('address', 'text');
+        $formMapper->add('city','text');
+        $formMapper->add('postal','number');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -31,6 +33,8 @@ class BarAdmin extends Admin
         $listMapper->addIdentifier('longitude');
         $listMapper->addIdentifier('latitude');
         $listMapper->addIdentifier('address');
+        $listMapper->addIdentifier('city');
+        $listMapper->addIdentifier('postal');
         $listMapper->addIdentifier('hunts');
     }
 }

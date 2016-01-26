@@ -44,17 +44,9 @@ class Country
      */
     protected $beers;
 
-    /**
-     * @var ArrayCollection The cities in this country
-     *
-     * @ORM\OneToMany(targetEntity="City", mappedBy="country")
-     */
-    protected $cities;
-
     public function __construct()
     {
         $this->beers = new ArrayCollection();
-        $this->cities = new ArrayCollection();
     }
 
     /**
@@ -119,22 +111,6 @@ class Country
     public function setBeers($beers)
     {
         $this->beers = $beers;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getCities()
-    {
-        return $this->cities;
-    }
-
-    /**
-     * @param ArrayCollection $cities
-     */
-    public function setCities($cities)
-    {
-        $this->cities = $cities;
     }
 
     public function __toString()

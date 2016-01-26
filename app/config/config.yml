@@ -120,10 +120,8 @@ sonata_admin:
         groups:
             BeerHunter:
                 items:
-                    - admin.address
                     - admin.bar
                     - admin.beer
-                    - admin.city
                     - admin.color
                     - admin.country
                     - admin.hunt

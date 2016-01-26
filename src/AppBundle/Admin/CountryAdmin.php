@@ -26,7 +26,6 @@ class CountryAdmin extends Admin
         $listMapper->addIdentifier('id');
         $listMapper->addIdentifier('name');
         $listMapper->addIdentifier('short');
-        $listMapper->addIdentifier('cities');
         $listMapper->addIdentifier('beers');
     }
 }

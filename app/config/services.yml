@@ -1,9 +1,4 @@
 services:
-    resource.address:
-        parent:    "api.resource"
-        arguments: [ "AppBundle\\Entity\\Address" ]
-        tags:      [ { name: "api.resource" } ]
-
     resource.bar:
         parent:    "api.resource"
         arguments: [ "AppBundle\\Entity\\Bar" ]
@@ -27,11 +22,6 @@ services:
     resource.beer.search_filter:
         parent:    "api.doctrine.orm.search_filter"
         arguments: [ { name: "exact" } ]
-
-    resource.city:
-        parent:    "api.resource"
-        arguments: [ "AppBundle\\Entity\\City" ]
-        tags:      [ { name: "api.resource" } ]
 
     resource.color:
         parent:    "api.resource"
@@ -99,18 +89,6 @@ services:
         arguments: [~, AppBundle\Entity\Country, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Country }
-
-    admin.city:
-        class: AppBundle\Admin\CityAdmin
-        arguments: [~, AppBundle\Entity\City, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, label: City }
-
-    admin.address:
-        class: AppBundle\Admin\AddressAdmin
-        arguments: [~, AppBundle\Entity\Address, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, label: Address }
 
     admin.trophy:
         class: AppBundle\Admin\TrophyAdmin

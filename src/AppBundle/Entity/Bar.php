@@ -38,12 +38,25 @@ class Bar
     protected $description;
 
     /**
-     * @var Address The address of the bar.
+     * @var String The address of the bar.
      *
-     * @ORM\OneToOne(targetEntity="Address", inversedBy="bar", cascade={"persist"}, fetch="EAGER")
-     * @ORM\JoinColumn(name="address_id", referencedColumnName="id")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $address;
+
+    /**
+     * @var String The city of the bar.
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $city;
+
+    /**
+     * @var int The postal code of the bar.
+     *
+     * @ORM\Column(type="integer", length=255, nullable=true)
+     */
+    protected $postal;
 
     /**
      * @var double The longitude of the bar.
@@ -122,7 +135,7 @@ class Bar
     }
 
     /**
-     * @return Address
+     * @return String
      */
     public function getAddress()
     {
@@ -130,7 +143,7 @@ class Bar
     }
 
     /**
-     * @param Address $address
+     * @param String $address
      */
     public function setAddress($address)
     {
@@ -183,6 +196,38 @@ class Bar
     public function setLatitude($latitude)
     {
         $this->latitude = $latitude;
+    }
+
+    /**
+     * @return String
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param String $city
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPostal()
+    {
+        return $this->postal;
+    }
+
+    /**
+     * @param int $postal
+     */
+    public function setPostal($postal)
+    {
+        $this->postal = $postal;
     }
 
     public function __toString()
