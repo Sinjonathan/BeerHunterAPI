@@ -26,15 +26,15 @@ class FilterController extends Controller
      *  resource=true,
      *  description="Give filter to get list of hunts",
      *  parameters={
-     *      {"name"="bar", "dataType"="integer", "required"=false, "description"="The id of the beer"},
-     *      {"name"="beer", "dataType"="integer", "required"=false, "description"="The id of the bar"},
+     *      {"name"="bar", "dataType"="integer", "required"=false, "description"="The id of the bar"},
+     *      {"name"="beer", "dataType"="integer", "required"=false, "description"="The id of the beer"},
      *      {"name"="color", "dataType"="integer", "required"=false, "description"="The id of the color"},
      *      {"name"="origin", "dataType"="integer", "required"=false, "description"="The id of the origin"},
-     *      {"name"="pressure", "dataType"="bolean", "required"=false, "description"="The beer is pressure or not"},
-     *      {"name"="priceMin", "dataType"="integer", "required"=false, "description"="The minimum price"},
-     *      {"name"="priceMax", "dataType"="integer", "required"=false, "description"="The maximum price"},
-     *      {"name"="degreeMax", "dataType"="integer", "required"=false, "description"="The maximum degree"},
-     *      {"name"="degreeMin", "dataType"="integer", "required"=false, "description"="The minimum degree"}
+     *      {"name"="pressure", "dataType"="boolean", "required"=false, "description"="The beer is pressure or not"},
+     *      {"name"="price_min", "dataType"="integer", "required"=false, "description"="The minimum price"},
+     *      {"name"="price_max", "dataType"="integer", "required"=false, "description"="The maximum price"},
+     *      {"name"="degree_max", "dataType"="integer", "required"=false, "description"="The maximum degree"},
+     *      {"name"="degree_min", "dataType"="integer", "required"=false, "description"="The minimum degree"}
      *  }
      * )
      *
@@ -49,6 +49,7 @@ class FilterController extends Controller
         $color = null;
         $origin = null;
         $pressure = null;
+        $status = 0;
         $priceMin = 0;
         $priceMax = 100;
         $degreeMin = 0;
@@ -58,6 +59,7 @@ class FilterController extends Controller
         $where = $where . ' h.price < :priceMax and';
         $where = $where . ' b.degree >= :degreeMin and';
         $where = $where . ' b.degree < :degreeMax and';
+        $where = $where . ' h.status < :status and';
 
         if($request->request->has('beer')) {
             $beer = $request->get('beer');
@@ -95,6 +97,10 @@ class FilterController extends Controller
             $degreeMax = $request->get('degree_max');
         }
 
+        if($request->request->has('status')) {
+            $degreeMax = $request->get('degree_max');
+        }
+
         if($where === '') {
             throw new HttpException(400, "Parameters required !");
         }
@@ -112,7 +118,8 @@ class FilterController extends Controller
             ->setParameter('priceMin', $priceMin)
             ->setParameter('priceMax', $priceMax)
             ->setParameter('degreeMin', $degreeMin)
-            ->setParameter('degreeMax', $degreeMax);
+            ->setParameter('degreeMax', $degreeMax)
+            ->setParameter('status', $status);
 
         if($pressure !== null) {
             $repo->setParameter('pressure', $pressure);

@@ -88,6 +88,11 @@ class Hunt
      * */
     protected $votes;
 
+    /**
+     * @var int The actual status for this hunt.
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
     protected $status = Hunt::STATUS_ACTIVE;
 
     public function __construct()
@@ -221,7 +226,16 @@ class Hunt
      */
     public function setStatus($status)
     {
-        $this->status = $status;
+        switch($status) {
+            case 1:
+                $this->status = Hunt::STATUS_VALID;
+                break;
+            case 2:
+                $this->status = Hunt::STATUS_UNAVAILABLE;
+                break;
+            default:
+                $this->status = Hunt::STATUS_ACTIVE;
+        }
     }
 
     /**
