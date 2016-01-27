@@ -91,7 +91,7 @@ class Hunt
     /**
      * @var int The actual status for this hunt.
      *
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer", nullable=false)
      */
     protected $status = Hunt::STATUS_ACTIVE;
 
