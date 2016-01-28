@@ -55,11 +55,12 @@ class FilterController extends Controller
         $degreeMin = 0;
         $degreeMax = 100;
 
+        $where = $where . ' h.beer = b.id and';
         $where = $where . ' h.price >= :priceMin and';
         $where = $where . ' h.price < :priceMax and';
         $where = $where . ' b.degree >= :degreeMin and';
         $where = $where . ' b.degree < :degreeMax and';
-        $where = $where . ' h.status < :status and';
+        $where = $where . ' h.status = :status and';
 
         if($request->request->has('beer')) {
             $beer = $request->get('beer');
@@ -98,14 +99,10 @@ class FilterController extends Controller
         }
 
         if($request->request->has('status')) {
-            $degreeMax = $request->get('degree_max');
+            $status = $request->get('status');
         }
 
-        if($where === '') {
-            throw new HttpException(400, "Parameters required !");
-        }
-
-        $where = substr($where, 0, -4);
+        $where = substr($where, 0, -3);
 
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->get('doctrine')->getEntityManager();
@@ -113,7 +110,7 @@ class FilterController extends Controller
         $repo = $em->getRepository('AppBundle:Hunt')->createQueryBuilder('h');
 
         $repo
-            ->join('AppBundle:Beer','b')
+            ->join('AppBundle\Entity\Beer','b')
             ->where($where)
             ->setParameter('priceMin', $priceMin)
             ->setParameter('priceMax', $priceMax)
@@ -137,12 +134,18 @@ class FilterController extends Controller
             $repo->setParameter('origin', $origin);
         }
 
-        $hunts = $repo->getQuery()->getResult();
+        if($status !== null) {
+            $repo->setParameter('status', $status);
+        }
+
+        $query = $repo->getQuery();
+
+        $hunts = $query->getResult();
 
         $encoder = new JsonEncoder();
         $normalizer = new ObjectNormalizer();
 
-        $normalizer->setIgnoredAttributes(array('color','timezone','origin','hunter','votes'));
+        $normalizer->setIgnoredAttributes(array('timezone','origin','hunter','votes'));
         $normalizer->setCircularReferenceHandler(function ($object) {
             return $object->getId();
         });
