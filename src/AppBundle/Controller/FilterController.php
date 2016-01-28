@@ -34,7 +34,8 @@ class FilterController extends Controller
      *      {"name"="price_min", "dataType"="integer", "required"=false, "description"="The minimum price"},
      *      {"name"="price_max", "dataType"="integer", "required"=false, "description"="The maximum price"},
      *      {"name"="degree_max", "dataType"="integer", "required"=false, "description"="The maximum degree"},
-     *      {"name"="degree_min", "dataType"="integer", "required"=false, "description"="The minimum degree"}
+     *      {"name"="degree_min", "dataType"="integer", "required"=false, "description"="The minimum degree"},
+     *     {"name"="status", "dataType"="integer", "required"=false, "description"="The status of the hunt"}
      *  }
      * )
      *

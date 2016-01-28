@@ -53,7 +53,6 @@ class Hunt
      * @var double The price of the beer.
      *
      * @ORM\Column(type="decimal", precision=15, scale=2, nullable=false)
-     * @Assert\Type(type="double")
      */
     protected $price;
 
