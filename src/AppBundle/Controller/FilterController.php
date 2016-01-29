@@ -146,7 +146,7 @@ class FilterController extends Controller
         $encoder = new JsonEncoder();
         $normalizer = new ObjectNormalizer();
 
-        $normalizer->setIgnoredAttributes(array('timezone','origin','hunter','votes','hunters','beers','hunts'));
+        $normalizer->setIgnoredAttributes(array('timezone','origin','hunter','votes','hunters','beers'));
         $normalizer->setCircularReferenceHandler(function ($object) {
             return $object->getId();
         });
