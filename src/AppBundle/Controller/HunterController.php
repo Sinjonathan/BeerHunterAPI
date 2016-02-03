@@ -45,11 +45,11 @@ class HunterController extends Controller
         $email= $request->get('_email');
 
         if (!($userManager->findUserByEmail($email) === null)){
-            throw new HttpException(400, "Email exist !");
+            throw new HttpException(480, "Email exist !");
         }
 
         if (!($userManager->findUserByUsername($username) === null)){
-            throw new HttpException(400, "User exist !");
+            throw new HttpException(481, "User exist !");
         }
 
         /** @var Hunter $user */
