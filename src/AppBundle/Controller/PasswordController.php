@@ -17,12 +17,12 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 class PasswordController extends Controller
 {
     /**
-     * @Route("/salt", name="Salt a new password")
+     * @Route("/salt", name="Salt and save a new password")
      * @Method({"POST"})
      *
      * @ApiDoc(
      *  resource=true,
-     *  description="Salt new password",
+     *  description="Salt and save a new password",
      *  parameters={
      *      {"name"="_password", "dataType"="string", "required"=true, "description"="User new password"},
      *      {"name"="_id", "dataType"="int", "required"=true, "description"="User id"}

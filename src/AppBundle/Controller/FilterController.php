@@ -56,6 +56,8 @@ class FilterController extends Controller
         $degreeMin = 0;
         $degreeMax = 100;
 
+        //Construct the where condition according to the parameters
+
         $where = $where . ' h.beer = b.id and';
         $where = $where . ' h.price >= :priceMin and';
         $where = $where . ' h.price < :priceMax and';
@@ -108,8 +110,8 @@ class FilterController extends Controller
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->get('doctrine')->getEntityManager();
 
+        // Create a query builder on the hunts and beers to get the filtered list of hunts
         $repo = $em->getRepository('AppBundle:Hunt')->createQueryBuilder('h');
-
         $repo
             ->join('AppBundle\Entity\Beer','b')
             ->where($where)
@@ -142,6 +144,8 @@ class FilterController extends Controller
         $query = $repo->getQuery();
 
         $hunts = $query->getResult();
+
+        //Create the response and remove some useless attributes
 
         $encoder = new JsonEncoder();
         $normalizer = new ObjectNormalizer();

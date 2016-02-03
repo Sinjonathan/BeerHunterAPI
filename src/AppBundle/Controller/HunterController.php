@@ -44,6 +44,8 @@ class HunterController extends Controller
         $password = $request->get('_password');
         $email= $request->get('_email');
 
+        // Verify if the users email or the user name are already used
+
         if (!($userManager->findUserByEmail($email) === null)){
             throw new HttpException(480, "Email exist !");
         }
@@ -51,6 +53,8 @@ class HunterController extends Controller
         if (!($userManager->findUserByUsername($username) === null)){
             throw new HttpException(481, "User exist !");
         }
+
+        // Create a new user and set its parameters
 
         /** @var Hunter $user */
         $user = $userManager->createUser();
@@ -69,6 +73,8 @@ class HunterController extends Controller
         $user->setExpired(false);
 
         $user->setCredentialsExpired(false);
+
+        // Persist the new user
 
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->get('doctrine')->getEntityManager();

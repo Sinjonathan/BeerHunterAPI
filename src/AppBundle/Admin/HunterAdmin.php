@@ -9,10 +9,15 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\UserBundle\Admin\Model\UserAdmin as SonataUserAdmin;
 
+/**
+ * Class HunterAdmin
+ * @package AppBundle\Admin
+ */
 class HunterAdmin extends SonataUserAdmin
 {
     /**
-     * {@inheritdoc}
+     * Configure the fields available in the edition and creation page
+     * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -76,7 +81,8 @@ class HunterAdmin extends SonataUserAdmin
     }
 
     /**
-     * {@inheritdoc}
+     * Configure all the filter available
+     * @param DatagridMapper $datagridMapper
      */
     protected function configureDatagridFilters(DatagridMapper $filterMapper)
     {
@@ -88,7 +94,8 @@ class HunterAdmin extends SonataUserAdmin
     }
 
     /**
-     * {@inheritdoc}
+     * Configure the fields available in the list view
+     * @param ListMapper $listMapper
      */
     protected function configureListFields(ListMapper $listMapper)
     {
