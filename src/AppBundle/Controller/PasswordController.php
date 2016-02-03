@@ -25,6 +25,7 @@ class PasswordController extends Controller
      *  description="Salt and save a new password",
      *  parameters={
      *      {"name"="_password", "dataType"="string", "required"=true, "description"="User new password"},
+     *      {"name"="_old_password", "dataType"="string", "required"=true, "description"="User old password"},
      *      {"name"="_id", "dataType"="int", "required"=true, "description"="User id"}
      *  }
      * )
@@ -34,7 +35,7 @@ class PasswordController extends Controller
      */
     public function saltPasswordAction(Request $request) {
 
-        if (!($request->request->has('_password') && $request->request->has('_id'))) {
+        if (!($request->request->has('_password') && $request->request->has('_id') && $request->request->has('_old_password'))) {
             throw new HttpException(400, "Parameters required !");
         }
 
@@ -43,12 +44,21 @@ class PasswordController extends Controller
         $repository = $em->getRepository('AppBundle:Hunter');
 
         $id = $request->get('_id');
+        $old = $request->get('_old');
         $password = $request->get('_password');
+
         /** @var Hunter $user */
         $user = $repository->findOneById($id);
 
         $factory = $this->get('security.encoder_factory');
         $encoder = $factory->getEncoder($user);
+
+        $old = $encoder->encodePassword($old, $user->getSalt());
+
+        if($old !== $user->getPassword()) {
+            throw new HttpException(482, "Password incorrect !");
+        }
+
         $password = $encoder->encodePassword($password, $user->getSalt());
 
         $user->setPassword($password);
