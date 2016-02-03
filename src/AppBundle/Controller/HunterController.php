@@ -1,6 +1,8 @@
 <?php
 
 namespace AppBundle\Controller;
+
+use AppBundle\Entity\Hunter;
 use Dunglas\ApiBundle\JsonLd\Response;
 use Sonata\CoreBundle\Tests\Entity\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -34,8 +36,6 @@ class HunterController extends Controller
     public function postUserAction(Request $request) {
 
         $userManager = $this->get('fos_user.user_manager');
-        /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
-        $dispatcher = $this->get('event_dispatcher');
         if (!($request->request->has('_username') && $request->request->has('_email') && $request->request->has('_password'))) {
             throw new HttpException(400, "Parameters required !");
         }
@@ -52,6 +52,7 @@ class HunterController extends Controller
             throw new HttpException(400, "User exist !");
         }
 
+        /** @var Hunter $user */
         $user = $userManager->createUser();
 
         $factory = $this->get('security.encoder_factory');
