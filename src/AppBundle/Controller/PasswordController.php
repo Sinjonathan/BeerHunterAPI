@@ -38,22 +38,21 @@ class PasswordController extends Controller
             throw new HttpException(400, "Parameters required !");
         }
 
-        $userManager = $this->get('fos_user.user_manager');
+        /** @var \Doctrine\ORM\EntityManager $em */
+        $em = $this->get('doctrine')->getEntityManager();
+        $repository = $em->getRepository('AppBundle:Hunter');
 
         $id = $request->get('_id');
         $password = $request->get('_password');
-
         /** @var Hunter $user */
-        $user = $userManager->findUserById($id);
+        $user = $repository->findOneById($id);
 
         $factory = $this->get('security.encoder_factory');
         $encoder = $factory->getEncoder($user);
         $password = $encoder->encodePassword($password, $user->getSalt());
 
-
         $user->setPassword($password);
-        /** @var \Doctrine\ORM\EntityManager $em */
-        $em = $this->get('doctrine')->getEntityManager();
+
         $em->persist($user);
         $em->flush();
 
