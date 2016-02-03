@@ -44,7 +44,7 @@ class PasswordController extends Controller
         $repository = $em->getRepository('AppBundle:Hunter');
 
         $id = $request->get('_id');
-        $old = $request->get('_old');
+        $old = $request->get('_old_password');
         $password = $request->get('_password');
 
         /** @var Hunter $user */
