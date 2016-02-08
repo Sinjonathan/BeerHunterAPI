@@ -15,6 +15,7 @@ Require **[composer][1]**
 Clean install
 =============
 
+| Description | Command |
 | --- | --- |
 | Clone the project | git clone https://github.com/Sinjonathan/BeerHunterAPI.git |
 | Move into project | cd BeerHunterAPI/ |
@@ -27,7 +28,6 @@ Clean install
 | Clear cache | php app/console cache:clear |
 | Enable JWT | |
 | Start the server | |
-| --- | --- |
 
 
 Test the API
@@ -41,12 +41,12 @@ Note :
 
 All the request use parameters in raw format ( JSON ), except :
 
+| Route |
 | --- |
 | /api/login_check |
 | /post_user |
 | /salt |
 | /post_hunt_filter |
-| --- |
 
 that use form-data parameters.
 
@@ -70,12 +70,12 @@ IMAGE POSTMAN
 
 You don't need the token for the requests :
 
+| Route |
 | --- |
 | /api/login_check |
 | /post_user |
 | /salt |
 | /post_hunt_filter |
-| --- |
 
 All other requests needs the token.
 
