@@ -26,8 +26,10 @@ Clean install
 | | sudo setfacl -R -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs |
 | | sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs |
 | Clear cache | php app/console cache:clear |
-| Enable JWT | |
-| Start the server | |
+| Get the JWT key | mkdir -p app/var/jwt |
+| | openssl genrsa -out app/var/jwt/private.pem -aes256 4096 |
+| | openssl rsa -pubout -in app/var/jwt/private.pem -out app/var/jwt/public.pem |
+| Start the server | php app/console server:start |
 
 
 Test the API
